@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>NED Attendance System</title>
+
+    <link rel="stylesheet" type="text/css" href="attendanceSheet.css">
+    <script src="attendanceSheet.js"></script>
+    <!-- <script src="https://apis.google.com/js/api.js"></script> -->
+
+</head>
+
+<body>
+    <header>
+        <img src="nedLogo2.png" alt="NED Logo" width="100" height="100">
+        <h1>NED Attendance System</h1>
+    </header>
+
+    <br><br>
+    <form onsubmit="return validateForm(event)">
+        <label for="department">Department:</label>
+        <input type="text" id="department" name="department" value="CSIT"><br><br>
+
+        <label for="batch">Batch:</label>
+        <input type="number" id="batch" value="2021" name="batch"><br><br>
+
+        <label for="section">Section:</label>
+        <select id="section" name="section" aria-valuenow="B">
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <!-- Add more options here as needed -->
+        </select><br><br>
+
+        <label for="subject">Subject:</label>
+        <select id="subject" name="subject">
+            <option value="CS-252: Computer Architecture and Organization">CS-252: Computer Architecture and Organization</option>
+            <option value="CT-261: Database Management Systems">CT-261: Database Management Systems</option>
+            <option value="EC-209: Financial & Cost Accounting">EC-209: Financial & Cost Accounting</option>
+            <option value="HS-200: Community Service">HS-200: Community Service</option>
+            <option value="HS-218: Business Communication">HS-218: Business Communication</option>
+            <option value="MT-272: Linear Algebra & Geometry">MT-272: Linear Algebra & Geometry</option>
+            <!-- Add more options here as needed -->
+        </select><br><br>
+
+        <label for="startWeek">From Week:</label>
+        <input type="number" id="startWeek" value="1" name="startWeek" min="1" max="16" step="1"><br><br>
+
+        <label for="endWeek">To Week:</label>
+        <input type="number" id="endWeek" value="2" name="endWeek" min="1" max="16" step="1"><br><br>
+
+        <input type="submit" value="Download">
+    </form>
+</body>
+
+</html>

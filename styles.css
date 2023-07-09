@@ -1,0 +1,337 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+@media print {
+
+    html,
+    body {
+        height: auto;
+    }
+}
+
+@media screen and (min-width: 768px) {
+
+    /* Adjust styles for tablets and larger screens */
+    .big-box input[type="text"],
+    .big-box textarea {
+        width: calc(60% - 10px);
+    }
+}
+
+@media screen and (min-width: 1024px) {
+
+    /* Adjust styles for desktop screens */
+    .big-box {
+        width: 95%;
+    }
+
+    .big-box input[type="text"],
+    .big-box textarea {
+        width: calc(70% - 10px);
+    }
+}
+
+.container {
+    width: auto;
+    height: auto;
+    padding: 5px;
+    overflow: auto;
+}
+.big-box {
+    width: 95%;
+    height: auto;
+    border: 1px solid #ccc;
+    padding: 5px;
+    overflow: auto;
+}
+
+.big-box input[type="text"],
+.big-box textarea {
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #070000;
+    margin-bottom: 10px;
+    width: auto;
+    box-sizing: border-box;
+}
+
+@media print {
+
+    html,
+    body {
+        height: 180mm;
+        /* A4 page height */
+        width: 210mm;
+        /* A4 page width */
+    }
+
+    body {
+        display: block;
+        margin: 0;
+        padding: 0;
+    }
+
+    .big-box {
+        overflow: hidden;
+        /* Prevent content overflow */
+    }
+}
+
+.logo-container {
+    /* position: absolute; */
+    top: 20px;
+    right: 20px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.logo-text {
+    margin-top: 10px;
+    font-size: 10px;
+    align-self: right;
+    margin-right: 10px;
+    color: #777;
+}
+.logo {
+    width: 80px;
+    height: 80px;
+    background: url('nedLogo.png') no-repeat center center;
+    background-size: contain;
+    filter: grayscale(100%);
+}
+
+@media print {
+    .logo {
+        display: block;
+        width: 80px;
+        height: 80px;
+        background: url('nedLogo.png') no-repeat center center; 
+        background-size: contain;
+        filter: grayscale(100%);
+    }
+    .break {
+        page-break-before: always;
+    }
+
+    .break:first-child {
+        page-break-before: auto;
+    }
+}
+
+
+/* Rest of the CSS code remains the same */
+
+.heading {
+    text-align: center;
+    align-items: center;
+    word-spacing: normal;
+    margin-bottom: 10px;
+    /* margin-top: 0px; */
+}
+
+.heading h3 {
+    margin: 0;
+    padding: 0;
+}
+
+.subject-input {
+    margin-bottom: 10px;
+    border: none;
+    text-align: left;
+}
+
+input[type="text"],
+textarea {
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #070000;
+}
+
+.subject-input span {
+    padding-bottom: 5px;
+    text-align: left;
+}
+
+.subject-input input[type="text"],
+.subject-input textarea {
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #070000;
+    width: 40%;
+    height: auto;
+    box-sizing: border-box;
+    resize: none;
+}
+
+.big-box {
+    width: auto;
+    height: auto;
+    border: 1px solid #ccc;
+    padding: 5px;
+}
+
+.big-box input[type="text"],
+.big-box textarea {
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #070000;
+    margin-bottom: 10px;
+    width: auto;
+    box-sizing: border-box;
+    /* Add this property to include padding and border in the width */
+}
+.top-box {
+    padding: 5px;
+    border: 1px solid #ccc;
+}
+.info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    margin-left: 10px;
+}
+
+.info .left {
+    flex-basis: 40%;
+    /* Modify the flex-basis value for full width on smaller screens */
+}
+
+.info .middle {
+    flex-basis: 40%;
+    /* Modify the flex-basis value for full width on smaller screens */
+}
+
+.info .right {
+    flex-basis: 20%;
+    /* Modify the flex-basis value for full width on smaller screens */
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.result {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+.result .left {
+    flex-basis: 33.3%;
+    /* Modify the flex-basis value for full width on smaller screens */
+}
+
+.result .middle {
+    flex-basis: 33.3%;
+    /* Modify the flex-basis value for full width on smaller screens */
+}
+
+.result .right {
+    flex-basis: 33.3%;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 0px;
+    border: 1px solid #ccc;
+}
+
+@media screen and (min-width: 768px) {
+
+    /* Adjust styles for tablets and larger screens */
+    .big-box input[type="text"],
+    .big-box textarea {
+        width: calc(60% - 10px);
+    }
+}
+
+@media screen and (min-width: 1024px) {
+
+    /* Adjust styles for desktop screens */
+    .big-box {
+        width: 95%;
+    }
+
+    .big-box input[type="text"],
+    .big-box textarea {
+        width: calc(70% - 10px);
+    }
+}
+/* Rest of the CSS code remains the same */
+
+.bottom-box {
+    width: auto;
+    height: auto;
+    padding: 5px;
+    padding-left: 15px;
+    border: 1px solid #ccc;
+}
+
+.details {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.details .left {
+    flex-basis: 50%;
+    /* Modify the flex-basis value for full width on smaller screens */
+}
+
+.details .right {
+    flex-basis: 50%;
+    /* Modify the flex-basis value for full width on smaller screens */
+}
+.note {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.note .left {
+    flex-basis: 65%;
+    /* Modify the flex-basis value for full width on smaller screens */
+}
+
+.note .right {
+    flex-basis: 35%;
+    /* Modify the flex-basis value for full width on smaller screens */
+}
+.note .left span {
+    margin-left: 25px;
+}
+.footer {
+    margin: auto;
+    padding: auto;
+}
+.header {
+    margin: auto;
+    padding: auto;
+}
+
+
+
+
