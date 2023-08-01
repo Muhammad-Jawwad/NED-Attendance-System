@@ -1,5 +1,12 @@
 // Retrieve the filtered data from sessionStorage
+var extractedData = JSON.parse(sessionStorage.getItem('data'));
+
+console.log("extractedData", extractedData);
+
+// Retrieve the filtered data from sessionStorage
 var data = JSON.parse(sessionStorage.getItem('filteredData'));
+
+console.log("filteredData", data);
 
 // Create an object to store the formatted data
 const formattedData = [];
@@ -31,16 +38,37 @@ data.forEach(entry => {
     weekEntry.Classes.push(classEntry);
 });
 
+// // Iterate over the formatted data and add roll numbers to the parameter "Attendance [Roll No ?]"
+// formattedData.forEach(weekEntry => {
+//     weekEntry.Classes.forEach(classEntry => {
+//         const rollNumbersKey = 'Roll numbers of other students (if any)';
+//         const rollNumbersString = classEntry[rollNumbersKey];
+//         if (rollNumbersString && rollNumbersString !== "NA") {
+//             const rollNumbers = rollNumbersString.split(', ').map(rollNumber => rollNumber.trim());
+//             classEntry.Backlog = {};
+//             rollNumbers.forEach(rollNumber => {
+//                 const attendanceKey = `Attendance [Roll No ${ rollNumber }]`;
+//                 classEntry.Backlog[attendanceKey] = "P";
+//             });
+//         }
+//     });
+// });
+
 // Iterate over the formatted data and add roll numbers to the parameter "Attendance [Roll No ?]"
 formattedData.forEach(weekEntry => {
     weekEntry.Classes.forEach(classEntry => {
         const rollNumbersKey = 'Roll numbers of other students (if any)';
-        const rollNumbersString = classEntry[rollNumbersKey];
+        let rollNumbersString = classEntry[rollNumbersKey];
+
+        if (typeof rollNumbersString === 'number') {
+            rollNumbersString = rollNumbersString.toString(); // Convert number to string
+        }
+
         if (rollNumbersString && rollNumbersString !== "NA") {
             const rollNumbers = rollNumbersString.split(', ').map(rollNumber => rollNumber.trim());
             classEntry.Backlog = {};
             rollNumbers.forEach(rollNumber => {
-                const attendanceKey = `Attendance [Roll No ${ rollNumber }]`;
+                const attendanceKey = `Attendance [Roll No ${rollNumber}]`;
                 classEntry.Backlog[attendanceKey] = "P";
             });
         }
@@ -48,17 +76,18 @@ formattedData.forEach(weekEntry => {
 });
 
 
+
 // Log the formatted data
 console.log("formattedData", formattedData);
 
 document.addEventListener("DOMContentLoaded", function () {
-    
+
     var container = document.querySelector('.container');
     // var topBox = document.querySelector('.top-box');
     // var bottomBox = document.querySelector('.bottom-box');
 
     // var body = document.querySelector('.pageBody');
-    let noOfWeek = formattedData.length 
+    let noOfWeek = formattedData.length
     // console.log("noOfWeek", noOfWeek);
 
     for (var i = 0; i < noOfWeek; i++) {
@@ -100,7 +129,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let noOfClasses = weekEntry.Classes.length
         // console.log("noOfClasses", noOfClasses);
 
-        for (let j = 0; j < noOfClasses; j++){
+        for (let j = 0; j < noOfClasses; j++) {
             var classEntry = formattedData[i].Classes[j];
             console.log("classEntry", classEntry);
             // console.log("Week",i);
@@ -130,7 +159,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     }
                 }
             }
-            if(classEntry.Backlog){
+            if (classEntry.Backlog) {
                 // Loop through the attendance records for each class
                 for (var key in classEntry.Backlog) {
                     if (key.startsWith('Attendance [Roll No')) {
@@ -163,12 +192,12 @@ document.addEventListener("DOMContentLoaded", function () {
                                 Topic: <span><input type="text" value="${topic}" class="no-outline" name="topic"></span>
                             </div>
                             <div class="right">
-                                <span class="regular" id="regular-${i+','+j}"></span>
+                                <span class="regular" id="regular-${i + ',' + j}"></span>
                                 <br>
-                                <span class="compensatory" id="compensatory-${i+','+j}"></span>
+                                <span class="compensatory" id="compensatory-${i + ',' + j}"></span>
                             </div>
                         </div>
-                        <div class="myTable" id="${i+','+j}"></div>
+                        <div class="myTable" id="${i + ',' + j}"></div>
                         <div class="result">
                             <div class="left">
                                 Total: <span><input type="text" value="${totalStudents}" class="no-outline" name="total"></span>
@@ -204,7 +233,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 compensatorySpans.style.border = "1px solid black";
             }
 
-            createTable(i,j);
+            createTable(i, j);
 
             var myTable = document.getElementById(i + ',' + j);
             // console.log("myTable", myTable) 
@@ -231,10 +260,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             }
             console.log("finished");
-            if (classEntry.Backlog){
+            if (classEntry.Backlog) {
                 console.log("finished Backlog");
                 for (var key in classEntry.Backlog) {
-                    
+
                     if (key.startsWith('Attendance [Roll No')) {
                         console.log("key", key);
                         var rollNumber = key.substring(key.indexOf('N') + 2, key.indexOf(']'));
@@ -289,9 +318,9 @@ document.addEventListener("DOMContentLoaded", function () {
         `;
         container.innerHTML += bottomEntryHTML;
     }
-    
 
-    function createTable(weekId,tableId) {
+
+    function createTable(weekId, tableId) {
         // Create the table element
         var table = document.createElement("table");
 
@@ -314,7 +343,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // th.textContent = i;
 
             // Append the cell to the row
-            tr.appendChild(th); 
+            tr.appendChild(th);
         }
 
         // Append the last row to the table header
@@ -324,7 +353,7 @@ document.addEventListener("DOMContentLoaded", function () {
         table.appendChild(thead);
 
         // Append the table to the specified container element on your page
-        var myTable = document.getElementById(weekId+','+tableId);
+        var myTable = document.getElementById(weekId + ',' + tableId);
         // console.log("myTable", myTable)  
         myTable.appendChild(table);
     }

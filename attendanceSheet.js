@@ -38,6 +38,7 @@ function retrieveData() {
 
             // Log the extracted JSON data
             console.log('Extracted JSON:', data);
+            sessionStorage.setItem('data', JSON.stringify(data));
 
             // Retrieve inputted values
             var subject = document.getElementById('subject').value;
